@@ -11,7 +11,7 @@ include_directories(headers/tree)
 
 add_executable(Data_Structure___Algorithm
         headers/algorithm/my_sort_algorithm.h
-        headers/graph/graph.h
+        headers/graph/my_graph.h
         headers/list/Hash.h
         headers/list/hash_fun.h
         headers/tree/AVLTree.h
@@ -22,4 +22,4 @@ add_executable(Data_Structure___Algorithm
         headers/tree/RedBlackTree.h
         headers/tree/Tree_ADT.h
         headers/pch.h
-        main.cpp)
+        main.cpp headers/algorithm/my_string_algorithm.h)
