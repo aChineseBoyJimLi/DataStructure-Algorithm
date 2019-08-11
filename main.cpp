@@ -38,7 +38,8 @@ void GraphUnitTest(){
             {INFINITE, INFINITE, INFINITE, 4, 1, INFINITE, INFINITE, 0}
     };
 
-    mg::Dijiskra(graphMatrix, 0);
+//    mg::Dijiskra(graphMatrix, 0);
+    mg::Prime(graphMatrix);
 }
 
 
@@ -66,7 +67,7 @@ int main() {
 
 //    GraphUnitTest();
 
-    StringUnitTest();
+    GraphUnitTest();
 
 
     return 0;

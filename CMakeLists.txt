@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(Data_Structure___Algorithm)
+project(DataStructure_Algorithm)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -9,8 +9,9 @@ include_directories(headers/graph)
 include_directories(headers/list)
 include_directories(headers/tree)
 
-add_executable(Data_Structure___Algorithm
+add_executable(DataStructure_Algorithm
         headers/algorithm/my_sort_algorithm.h
+        headers/algorithm/my_string_algorithm.h
         headers/graph/my_graph.h
         headers/list/Hash.h
         headers/list/hash_fun.h
@@ -22,4 +23,4 @@ add_executable(Data_Structure___Algorithm
         headers/tree/RedBlackTree.h
         headers/tree/Tree_ADT.h
         headers/pch.h
-        main.cpp headers/algorithm/my_string_algorithm.h)
+        main.cpp)

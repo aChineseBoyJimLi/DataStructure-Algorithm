@@ -280,21 +280,24 @@ namespace mg{
      * Prim算法是一种产生最小生成树的方法, 它运用了贪心的思想, 而贪心算法成立需要证明, 证明在后面给出
      * Prim算法从任意一个顶点开始, 每次选择一个与当前顶点最近的一个顶点, 并将两个顶点之间的边加入到树中.
      *
+     * Prime 算法证明:
+     *
      */
     template<typename vertexType>
     void Prime(CGraph_Matrix<vertexType> graph){
 
         // 用一个与输入图一样大小的二维矩阵表示输出的最小支撑树
         int tree[graph.size][graph.size];
-        for(int i=0; i<graph.size; i++){
-            for(int j=0; j<graph.size; j++){
-                if(i==j){
-                    tree[i][j] = 0;
-                    continue;
-                }
-                tree[i][j] = INFINITE;
-            }
-        }
+//        for(int i=0; i<graph.size; i++){
+//            for(int j=0; j<graph.size; j++){
+//                if(i==j){
+//                    tree[i][j] = 0;
+//                    continue;
+//                }
+//                tree[i][j] = INFINITE;
+//            }
+//        }
+        int sum = 0;
 
         // 顶点的访问情况, visit 对应的下标对应图的顶点集的下表, visit 中的 bool 值判断该顶点是否访问过
         std::vector<bool> visit;
@@ -315,13 +318,52 @@ namespace mg{
         // 遍历表中的每一个节点
         for(int i=1; i<graph.size; i++){
             int min = INFINITE;
-            for(int j=0; j<graph.size; j++){
+            for(int j=1; j<graph.size; j++){
                 if(!visit[j] && dist[j] < min){
                     min = dist[j];
+                    curr = j;
+                }
+            }
+            sum += min;
+            visit[curr] = true;
 
+            // 从当前顶点开始搜寻到下一个代价最小的顶点, 更新 dist 数组
+            for(int j=1; j<graph.size; j++){
+                if(!visit[j] && dist[j] > graph.matrix[curr][j]){
+                    dist[j] = graph.matrix[curr][j];
                 }
             }
         }
+        std::cout << "最小支撑树的代价为: " << sum << std::endl;
+    }
+
+
+    /*
+     * Kruskal 算法
+     * Kruskal 算法是一种求加权连通图的最小生成树的算法, 基本思路是按照权值从小到大的顺序选择n-1条边，并保证这n-1条边不构成回路
+     * 具体做法是: 首先构造一个只含n个顶点的森林，然后依权值从小到大从连通网中选择边加入到森林中，并使森林中不产生回路，直至森林变成一棵树为止
+     *
+     * Kruskal 算法同样运用了贪心的思想, 证明在下面给出
+     *
+     * 算法步骤：
+     * 1.新建图G，G中拥有原图中相同的节点，但没有边；
+     * 2.将原图中所有的边按权值从小到大排序；
+     * 3.从权值最小的边开始，如果这条边连接的两个节点于图G中不在同一个连通分量中，则添加这条边到图G中；
+     * 4.重复3，直至图G中所有的节点都在同一个连通分量中
+     *
+     * Kruskal 算法证明:
+     * 这样的步骤保证了选取的每条边都是桥，因此图G构成一个树;
+     *
+     * 为什么这一定是最小生成树呢？关键还是步骤3中对边的选取。算法中总共选取了n-1条边，每条边在选取的当时，都是连接两个不同的连通分量的权值最小
+     * 的边;
+     *
+     * 要证明这条边一定属于最小生成树，可以用反证法：如果这条边不在最小生成树中，它连接的两个连通分量最终还是要连起来的，通过其他的连法，那么另
+     * 一种连法与这条边一定构成了环，而环中一定有一条权值大于这条边的边，用这条边将其替换掉，图仍旧保持连通，但总权值减小了。也就是说，如果不选取
+     * 这条边，最后构成的生成树的总权值一定不会是最小的
+     */
+    template<typename vertexType>
+    void Kruskal(CGraph_Matrix<vertexType> graph){
+        
     }
 
 
