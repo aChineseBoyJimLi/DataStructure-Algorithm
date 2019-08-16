@@ -4,6 +4,7 @@
 #include "algorithm/my_sort_algorithm.h"
 #include "algorithm/my_string_algorithm.h"
 #include "graph/my_graph.h"
+#include "algorithm/my_dp_algorithm.h"
 
 #include <iostream>
 #include <ctime>

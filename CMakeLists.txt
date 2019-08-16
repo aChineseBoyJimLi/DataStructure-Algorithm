@@ -12,6 +12,7 @@ include_directories(headers/tree)
 add_executable(DataStructure_Algorithm
         headers/algorithm/my_sort_algorithm.h
         headers/algorithm/my_string_algorithm.h
+        headers/algorithm/my_dp_algorithm.h
         headers/graph/my_graph.h
         headers/list/Hash.h
         headers/list/hash_fun.h

@@ -363,7 +363,7 @@ namespace mg{
      */
     template<typename vertexType>
     void Kruskal(CGraph_Matrix<vertexType> graph){
-        
+
     }
 
 

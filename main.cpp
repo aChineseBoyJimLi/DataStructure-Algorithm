@@ -67,8 +67,10 @@ int main() {
 
 //    GraphUnitTest();
 
-    GraphUnitTest();
-
+//    GraphUnitTest();
+//    std::unordered_map<int, int> hashMap;
+    int a = dp::CutRopeProblemRecursive(8);
+    std::cout << a << std::endl;
 
     return 0;
 }
